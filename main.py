@@ -3,6 +3,7 @@ import pymongo
 from bson.objectid import ObjectId
 from datetime import datetime, timedelta
 import re
+import json
 import hashlib
 # example: hashlib.sha3_512(b"Nobody inspects the spammish repetition").hexdigest()
 # other SHA3: sha3_224(), sha3_256(), sha3_384(), sha3_512()
@@ -42,14 +43,18 @@ def index():
 def token_verify():
     # return verify_token('abc','123')
     try:
-        token = request.get_json()['token']
+        data = request.get_json()
+        token = json.dumps(data)['token']
         res = {'status' : 200, 
                'message' : 'OK', 
                'token' : str(token)}
     except KeyError:
+        """
         res = {'status' : 400, 
                'message' : 'Bad Request', 
                'token' : 'None'}
+        """
+        abort(400)
     return jsonify(res)
 
 if __name__ == "__main__":
