@@ -41,10 +41,15 @@ def index():
 @app.route('/token/verify', methods=['POST'])
 def token_verify():
     # return verify_token('abc','123')
-    token = request.json['token']
-    res = {'status' : 200, 
-           'message' : 'OK', 
-           'token' : str(token)}
+    try:
+        token = request.json['token']
+        res = {'status' : 200, 
+               'message' : 'OK', 
+               'token' : str(token)}
+    except KeyError:
+        res = {'status' : 400, 
+               'message' : 'Bad Request', 
+               'token' : 'None'}
     return jsonify(res)
 
 if __name__ == "__main__":
