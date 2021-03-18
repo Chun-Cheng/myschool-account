@@ -2,7 +2,9 @@ from flask import Flask, request, redirect, render_template, url_for, flash, jso
 import pymongo
 from bson.objectid import ObjectId
 import re
-
+import hashlib
+# example: hashlib.sha3_512(b"Nobody inspects the spammish repetition").hexdigest()
+# other SHA3: sha3_224(), sha3_256(), sha3_384(), sha3_512()
 
 client = pymongo.MongoClient('mongodb+srv://dbUser:o5jzqcHzuKacB2Y1@lunchbox.1pvyu.mongodb.net/lunchbox?retryWrites=true&w=majority')
 database = client.account
