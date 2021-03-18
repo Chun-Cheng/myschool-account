@@ -42,7 +42,7 @@ def index():
 def token_verify():
     # return verify_token('abc','123')
     try:
-        token = (request.json)['token']
+        token = request.get_json()['token']
         res = {'status' : 200, 
                'message' : 'OK', 
                'token' : str(token)}
