@@ -44,7 +44,7 @@ def token_verify():
     # return verify_token('abc','123')
     try:
         data = request.get_json()
-        token = json.dumps(data)['token']
+        token = json.loads(data)['token']
         res = {'status' : 200, 
                'message' : 'OK', 
                'token' : str(token)}
