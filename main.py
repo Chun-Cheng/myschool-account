@@ -41,7 +41,7 @@ def index():
 @app.route('/token/verify', methods=['POST'])
 def token_verify():
     # return verify_token('abc','123')
-    token = request.form.get('token')
+    token = request.json['token']
     res = {'status' : 200, 
            'message' : 'OK', 
            'token' : str(token)}
