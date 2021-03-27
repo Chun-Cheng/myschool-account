@@ -43,11 +43,10 @@ def index():
 def token_verify():
     # return verify_token('abc','123')
     try:
-        data = request.get_json()
-        token = json.loads(data)['token']
+        data = json.loads(request.data)
         res = {'status' : 200, 
                'message' : 'OK', 
-               'token' : str(token)}
+               'token' : str(data['token'])}
     except KeyError:
         """
         res = {'status' : 400, 
