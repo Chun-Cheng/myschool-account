@@ -7,6 +7,11 @@ import json
 import hashlib
 # example: hashlib.sha3_512(b"Nobody inspects the spammish repetition").hexdigest()
 # other SHA3: sha3_224(), sha3_256(), sha3_384(), sha3_512()
+import function
+
+import api
+import webpage
+
 
 client = pymongo.MongoClient('mongodb+srv://dbUser:o5jzqcHzuKacB2Y1@lunchbox.1pvyu.mongodb.net/lunchbox?retryWrites=true&w=majority')
 database = client.account
@@ -55,6 +60,10 @@ def token_verify():
         """
         abort(400)
     return jsonify(res)
+
+
+app.register_blueprint(api.api)
+app.register_blueprint(webpage.webpage)
 
 if __name__ == "__main__":
     app.run()
