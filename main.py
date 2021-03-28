@@ -40,9 +40,11 @@ def verify_token(user_id, token):
     """
     return True
 
+"""
 @app.route('/')
 def index():
     return 'hi~ This is myschool-accout(temporary name)'
+"""
 
 @app.route('/token/verify', methods=['POST'])
 def token_verify():
