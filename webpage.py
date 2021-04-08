@@ -8,7 +8,7 @@ def index():
     return 'This is myschool-account-webpage'
 
 
-@app.route('/signup', methods=['GET', 'POST'])
+@webpage.route('/signup', methods=['GET', 'POST'])
 def page_signup():
     if request.method == 'POST':
         first_name = request.form.get('first_name')
