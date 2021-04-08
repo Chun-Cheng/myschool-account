@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset=UTF-8>
+        <meta http-equiv="x-ua-compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>註冊</title>
+    </head>
+    <body>
+        <p class="title text-center">註冊</p>
+        <form method="POST" action="/signup">
+            <label for="last_name">姓</label>
+            <input type="textarea" name="last_name" required>
+            <br>
+            <label for="first_name">名</label>
+            <input type="textarea" name="first_name" required>
+            <br>
+            <label for="email">電子信箱</label>
+            <input type="textarea" name="email" required>
+            <br>
+            <label for="phone">手機號碼</label>
+            <input type="textarea" name="phone" required>
+            <br>
+            <label for="password">密碼</label>
+            <input type="textarea" name="password" required>
+            <br>
+            <label for="password_check">確認密碼</label>
+            <input type="textarea" name="password_check" required>
+            <br>
+        
+            <span>
+            <button type="submit" class="btn btn-primary">註冊</button>
+            <button type="reset" class="btn btn-default">清除</button>
+            </span>
+        </form>
+    </body>
+</html>
