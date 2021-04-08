@@ -23,7 +23,7 @@ def data_signup( first_name, last_name, email, phone, password ):
                   'phone' : phone, 
                   'password' : password }
 
-    x = my_account.insert_one(insert_data)
+    x = database.insert_one(insert_data)
     _id = x.inserted_id
 
     return _id
