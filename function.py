@@ -2,6 +2,7 @@ import pymongo
 
 client = pymongo.MongoClient('mongodb+srv://dbUser:o5jzqcHzuKacB2Y1@lunchbox.1pvyu.mongodb.net/lunchbox?retryWrites=true&w=majority')
 database = client.myaccount
+accounts = client.accounts
 
 def data_signup( first_name, last_name, email, phone, password ):
     """
@@ -15,7 +16,7 @@ def data_signup( first_name, last_name, email, phone, password ):
     output:
       data_id
     """
-    global database
+    global accounts
 
     insert_data = { 'first_name' : first_name ,
                   'last_name' : last_name ,
@@ -23,7 +24,7 @@ def data_signup( first_name, last_name, email, phone, password ):
                   'phone' : phone, 
                   'password' : password }
 
-    x = database.insert_one(insert_data)
+    x = accounts.insert_one(insert_data)
     _id = x.inserted_id
 
     return _id
