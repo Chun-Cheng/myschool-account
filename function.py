@@ -18,7 +18,7 @@ def data_signup( first_name, last_name, email, phone, password ):
     global database
 
     insert_data = { 'first_name' : first_name ,
-                  'last_name' ; last_name ,
+                  'last_name' : last_name ,
                   'email' : email, 
                   'phone' : phone, 
                   'password' : password }
