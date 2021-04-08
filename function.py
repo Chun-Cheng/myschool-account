@@ -2,7 +2,7 @@ import pymongo
 
 client = pymongo.MongoClient('mongodb+srv://dbUser:o5jzqcHzuKacB2Y1@lunchbox.1pvyu.mongodb.net/lunchbox?retryWrites=true&w=majority')
 database = client.myaccount
-accounts = client.accounts
+accounts = database.accounts
 
 def data_signup( first_name, last_name, email, phone, password ):
     """
