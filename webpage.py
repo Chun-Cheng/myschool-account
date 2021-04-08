@@ -29,3 +29,17 @@ def page_signup():
     else:
         return render_template('signup.html')
     
+
+@webpage.route('/login', methods=['GET', 'POST'])
+def page_login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        
+        #_id = function.data_signup(first_name=first_name, last_name=last_name, email=email,  phone=phone, password=password)
+        
+        return '成功登入!'
+        
+    else:
+        return render_template('login.html')
+    
