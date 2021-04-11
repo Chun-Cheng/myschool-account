@@ -19,7 +19,7 @@ def data_signup( first_name, last_name, email, phone, password ):
     """
     global accounts
     
-    find_result = accounts.find({'email':email})
+    find_result = list(accounts.find({'email':email}))
     if len(find_result) > 0:
         return 'email have been exist!'
     
@@ -47,7 +47,7 @@ def data_login_check(email, password):
     """
     global accounts
     
-    find_result = accounts.find({'email':email}, {'_id':1, 'first_name':1, 'last_name':1, 'password_hash':1})
+    find_result = list(accounts.find({'email':email}, {'_id':1, 'first_name':1, 'last_name':1, 'password_hash':1}))
     if len(find_result) == 0:
         return 'email ERROR!'
     if check_password_hash(find_result[0]['password_hash'], password) == False:
