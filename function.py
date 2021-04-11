@@ -92,6 +92,6 @@ def data_logout(token):
     global accounts
     
     logins.delete_one({'_id':ObjectId(token)})
-    accounts.update({ '$pull':{'logins':token} })
+    accounts.update({'_id':ObjectId(token)}, { '$pull':{'logins':token} })
     
     return None
