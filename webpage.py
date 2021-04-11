@@ -55,5 +55,8 @@ def page_logout():
 
 @webpage.route('/session_check')
 def page_session_check():
-    return session['token']
+    try:
+        return session['token']
+    except:
+        return 'Nothing~'
     
