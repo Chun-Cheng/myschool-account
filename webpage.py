@@ -36,7 +36,8 @@ def page_login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        #_id = function.data_signup(first_name=first_name, last_name=last_name, email=email,  phone=phone, password=password)
+        data = function.data_login_check(email=email, password=password)
+        return data
         
         return '成功登入!'
         
