@@ -37,8 +37,19 @@ def page_login():
         password = request.form.get('password')
         
         _id = function.data_login_check(email=email, password=password)
-        return _id
+        #return _id
+        token = function.data_login_write(_id)
+        
+        session['token'] = token
+        session.permanent = True
+        return token
         
     else:
         return render_template('login.html')
+    
+@webpage.route('/logout')
+def page_logout():
+    function.data_logout(session['token'])
+    session.pop('token', None)
+    return '已登出'
     
