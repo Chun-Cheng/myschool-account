@@ -36,7 +36,7 @@ def data_signup( first_name, last_name, email, phone, password ):
     x = accounts.insert_one(insert_data)
     _id = x.inserted_id
 
-    return _id
+    return str(_id)
 
 def data_login_check(email, password):
     """
