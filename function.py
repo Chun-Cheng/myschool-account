@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 client = pymongo.MongoClient('mongodb+srv://dbUser:o5jzqcHzuKacB2Y1@lunchbox.1pvyu.mongodb.net/lunchbox?retryWrites=true&w=majority')
 database = client.myaccount
 accounts = database.accounts
-have_login = database.have_login
+logins = database.logins
 
 def data_signup( first_name, last_name, email, phone, password ):
     """
@@ -66,7 +66,7 @@ def data_login_write(_id):
     output:
       token
     """
-    global have_login
+    global logins
     global accounts
     
     insert_data = { 'device' : 'Unknow' ,
@@ -79,3 +79,19 @@ def data_login_write(_id):
     accounts.update({'_id': ObjectId(_id)}, {'$push': {'logins': token}})
     
     return token
+
+def data_logout(token):
+    """
+    清除登入資料(登出)
+    input:
+      token
+    output:
+      None
+    """
+    global logins
+    global accounts
+    
+    logins.delete_one({'_id':ObjectId(token)})
+    accounts.update({ $pull: {'logins':token})
+    
+    return None
