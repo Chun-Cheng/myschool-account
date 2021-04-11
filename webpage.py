@@ -52,4 +52,8 @@ def page_logout():
     function.data_logout(session['token'])
     session.pop('token', None)
     return '已登出'
+
+@webpage.route('/session_check')
+def page_session_check():
+    return session['token']
     
