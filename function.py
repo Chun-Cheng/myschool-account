@@ -52,5 +52,6 @@ def data_login_check(email, password):
         return 'email ERROR!'
     if check_password_hash(find_result[0]['password_hash'], password) == False:
         return 'password ERROR!'
+    find_result[0]['_id'] = str(find_result[0]['_id'])
     return find_result[0]
 
