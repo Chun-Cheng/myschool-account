@@ -73,7 +73,7 @@ def data_login_write(_id):
                     'login_time' : datetime.utcnow() ,
                     'expire_time' : None, 
                     'authorization' : 'ALL' }
-    x = accounts.insert_one(insert_data)
+    x = logins.insert_one(insert_data)
     token = x.inserted_id
     
     accounts.update({'_id': ObjectId(_id)}, {'$push': {'logins': token}})
