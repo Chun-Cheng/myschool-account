@@ -1,0 +1,19 @@
+{% extends 'template_sign.html' %}
+
+{% block title %}登入{% endblock %}
+
+{% block main %}
+  <p class="title text-center">註冊</p>
+  <form method="POST" action="/login">
+    <label for="email">電子信箱</label>
+    <input type="email" name="email" required>
+    <br>
+    <label for="password">密碼</label>
+    <input type="password" name="password" required>
+    <br>
+    <span>
+    <button type="submit" class="btn btn-primary">登入</button>
+    <button type="reset" class="btn btn-default">清除</button>
+    </span>
+  </form>
+{% endblock %}
