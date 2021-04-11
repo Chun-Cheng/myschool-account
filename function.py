@@ -27,7 +27,7 @@ def data_signup( first_name, last_name, email, phone, password ):
                   'last_name' : last_name ,
                   'email' : email, 
                   'phone' : phone, 
-                  'password_hash' : generate_password_hash(password,'shake_256') }
+                  'password_hash' : generate_password_hash(password,'sha3_512') }
 
     x = accounts.insert_one(insert_data)
     _id = x.inserted_id
