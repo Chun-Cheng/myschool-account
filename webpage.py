@@ -24,7 +24,7 @@ def page_signup():
         
         _id = function.data_signup(first_name=first_name, last_name=last_name, email=email,  phone=phone, password=password)
         
-        return '成功註冊!'
+        return _id
         
     else:
         return render_template('signup.html')
@@ -36,10 +36,8 @@ def page_login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        data = function.data_login_check(email=email, password=password)
-        return data
-        
-        return '成功登入!'
+        _id = function.data_login_check(email=email, password=password)
+        return _id
         
     else:
         return render_template('login.html')
