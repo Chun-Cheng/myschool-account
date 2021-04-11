@@ -69,9 +69,10 @@ def data_login_write(_id):
     global logins
     global accounts
     
-    insert_data = { 'device' : 'Unknow' ,
+    insert_data = { 'account' : _id ,
+                    'device' : 'Unknow' ,
                     'login_time' : datetime.utcnow() ,
-                    'expire_time' : None, 
+                    'expire_time' : None , 
                     'authorization' : 'ALL' }
     x = logins.insert_one(insert_data)
     token = str(x.inserted_id)
@@ -91,7 +92,8 @@ def data_logout(token):
     global logins
     global accounts
     
+    account_id = list(logins.find({'_id':ObjectId(token)}, {'account':1}))[0]['account']
     logins.delete_one({'_id':ObjectId(token)})
-    accounts.update({'_id':ObjectId(token)}, { '$pull':{'logins':token} })
+    accounts.update({'_id':ObjectId(account_id)}, { '$pull':{'logins':token} })
     
     return None
