@@ -97,3 +97,19 @@ def data_logout(token):
     accounts.update({'_id':ObjectId(account_id)}, { '$pull':{'logins':token} })
     
     return None
+
+
+def data_login_find(token):
+    """
+    確認目前登入token是否可用(是否為登入狀態)
+    input:
+      token
+    output:
+      T/F
+    """
+    global logins
+    
+    the_login = list(logins.find({'_id':Object(token)}, {'authorization':1}))  # 保留token權限控制空間
+    if len(the_login) == 1:
+        return True
+    return False
