@@ -12,6 +12,7 @@ def index():
 
 @webpage.route('/signup', methods=['GET', 'POST'])
 def page_signup():
+    # 已經登入要轉走
     if request.method == 'POST':
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
@@ -34,6 +35,7 @@ def page_signup():
 
 @webpage.route('/login', methods=['GET', 'POST'])
 def page_login():
+    # 已經登入要轉走
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
