@@ -63,7 +63,7 @@ def page_logout():
     return '已登出'
 
 
-@webapp.route('/login_request')
+@webpage.route('/login_request')
 def page_login_request():
     global valid_continue_uri
     continue_uri = request.args.get('continue_uri')
