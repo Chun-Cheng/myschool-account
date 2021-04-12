@@ -109,7 +109,7 @@ def data_login_find(token):
     """
     global logins
     
-    the_login = list(logins.find({'_id':Object(token)}, {'authorization':1}))  # 保留token權限控制空間
+    the_login = list(logins.find({'_id':ObjectId(token)}, {'authorization':1}))  # 保留token權限控制空間
     if len(the_login) == 1:
         return True
     return False
