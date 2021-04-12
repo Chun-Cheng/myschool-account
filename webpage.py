@@ -76,9 +76,9 @@ def page_login_request():
             return redirect(f'{continue_uri}?token={str(token)}')
         else:
             session.pop('token', None)
-            return redirect(f'https://myschool-account.herokuapp.com?continue_uri={continue_uri}')
+            return redirect(f'https://myschool-account.herokuapp.com/login?continue_uri={continue_uri}')
     except KeyError:
-        return redirect(f'https://myschool-account.herokuapp.com?continue_uri={continue_uri}')
+        return redirect(f'https://myschool-account.herokuapp.com/login?continue_uri={continue_uri}')
     
 
 @webpage.route('/session_check')
