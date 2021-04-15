@@ -113,3 +113,20 @@ def data_login_find(token):
     if len(the_login) == 1:
         return True
     return False
+
+
+def data_account_data_get(token, query):
+    """
+    取得用戶資料
+    input:
+      token
+      query
+    output:
+      find_result[0]
+    """
+    global accounts
+    global logins
+    
+    account_id = list(logins.find({'_id':ObjectId(token)}, {'account':1}))[0]['account']
+    find_result = list(accounts.find({'_id':account_id}, query))
+    return find_result[0]
