@@ -12,7 +12,13 @@ def index():
 
 @webpage.route('/signup', methods=['GET', 'POST'])
 def page_signup():
-    # 已經登入要轉走
+    try:
+        token = session['token']
+        if function.data_login_find(token) != True:
+            return '你已經登入了'
+    except KeyError:
+        pass
+    
     if request.method == 'POST':
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
@@ -35,11 +41,21 @@ def page_signup():
 
 @webpage.route('/login', methods=['GET', 'POST'])
 def page_login():
-    # 已經登入要轉走
+    continue_uri = request.args.get('continue_uri')
+    try:
+        token = session['token']
+        if function.data_login_find(token) != True:
+            if continue_uri != None:
+                # 驗證機制
+                return redirect(continue_uri)
+            else:
+                return '你已經登入了'
+    except KeyError:
+        pass
+    
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        continue_uri = request.args.get('continue_uri')
         
         _id = function.data_login_check(email=email, password=password)
         #return _id
