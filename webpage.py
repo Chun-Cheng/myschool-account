@@ -14,7 +14,7 @@ def index():
 def page_signup():
     try:
         token = session['token']
-        if function.data_login_find(token) != True:
+        if function.data_login_find(token) == True:
             return '你已經登入了'
     except KeyError:
         pass
@@ -44,7 +44,7 @@ def page_login():
     continue_uri = request.args.get('continue_uri')
     try:
         token = session['token']
-        if function.data_login_find(token) != True:
+        if function.data_login_find(token) == True:
             if continue_uri != None:
                 # 驗證機制
                 return redirect(continue_uri)
