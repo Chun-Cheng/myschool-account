@@ -47,7 +47,7 @@ def page_login():
         if function.data_login_find(token) == True:
             if continue_uri != None:
                 # 驗證機制
-                return redirect(continue_uri)
+                return redirect('https://myschool-account.herokuapp.com/login_request')
             else:
                 return '你已經登入了'
     except KeyError:
